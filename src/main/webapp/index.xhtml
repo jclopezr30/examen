@@ -1,0 +1,79 @@
+<f:view xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:p="http://primefaces.org/ui"
+        xmlns:h="http://java.sun.com/jsf/html">
+
+    <h:head>
+        <title>CLIENTE</title>
+    </h:head>
+    <h:body>
+        <h:form id="cliente">
+            <h5 class="mt-0">CLIENTE</h5>
+            <h:panelGrid columns="8" cellpadding="7">
+
+                <h:outputText value="Nombre"/>
+                <p:inputText id="nombre"
+                             value="#{clienteBackBean.nombre}"/>
+
+                <h:outputText value="Apellido"/>
+                <p:inputText id="apellido"
+                             value="#{clienteBackBean.apellido}">
+                </p:inputText>
+
+                <h:outputText value="Telefono"/>
+                <p:inputText id="telefono"
+                             value="#{clienteBackBean.telefono}">
+                </p:inputText>
+            </h:panelGrid>
+
+            <p:commandButton value="Guardar"
+                             icon="pi pi-check"
+                             actionListener="#{clienteBackBean.Guardar()}"/>
+        </h:form>
+
+        <p:panel id="panel" header="Categorias Disponibles" style="height: 200px">
+            <br/>
+            <br/>
+            <p:dataTable id="categoria"
+                         var="cat"
+                         value="#{clienteBackBean.listaApi}"
+                         rowKey="#{cat.idcategoria}"
+                         selectionMode="single">
+
+                <p:column headerText="id">
+                    <h:outputText value="#{cat.idcategoria}"/>
+                </p:column>
+
+                <p:column headerText="Apellido">
+                    <h:outputText value="#{cat.descripcion}"/>
+                </p:column>
+
+                <p:column headerText="Telefono">
+                    <h:outputText value="#{cat.estado}"/>
+                </p:column>
+            </p:dataTable>
+
+        </p:panel>
+
+        <h:form id="formLista">
+            <p:dataTable
+                    var="product"
+                    value="#{clienteBackBean.lista}">
+
+                <p:column headerText="Nombre">
+                    <h:outputText value="#{product.nombre}"/>
+                </p:column>
+
+                <p:column headerText="Apellido">
+                    <h:outputText value="#{product.apellido}"/>
+                </p:column>
+
+                <p:column headerText="Telefono">
+                    <h:outputText value="#{product.telefono}"/>
+                </p:column>
+            </p:dataTable>
+        </h:form>
+
+
+    </h:body>
+</f:view>
